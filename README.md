@@ -17,6 +17,8 @@ If the application doesn't work as expected, please [report an issue](https://gi
 and include the diagnostics.
 
 Ruby on Rails
+
+Hello
 -------------
 
 This application requires:
