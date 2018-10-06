@@ -36,7 +36,6 @@ gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
 group :development do
   gem 'better_errors'
-  gem 'foreman'
   gem 'rails_layout'
 end
 group :development, :test do
