@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_07_003635) do
+ActiveRecord::Schema.define(version: 2018_10_07_182946) do
 
   create_table "companies", force: :cascade do |t|
     t.string "title"
@@ -41,8 +41,21 @@ ActiveRecord::Schema.define(version: 2018_10_07_003635) do
     t.integer "work_conditions"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "review"
     t.index ["company_id"], name: "index_ratings_on_company_id"
     t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
+  create_table "rewards", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "pic_file_name"
+    t.string "pic_content_type"
+    t.integer "pic_file_size"
+    t.datetime "pic_updated_at"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -79,6 +92,7 @@ ActiveRecord::Schema.define(version: 2018_10_07_003635) do
     t.integer "invited_by_id"
     t.integer "invitations_count", default: 0
     t.integer "company_id"
+    t.float "points"
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true

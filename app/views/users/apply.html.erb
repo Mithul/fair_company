@@ -7,7 +7,17 @@
     <% @companies.each do |company| %>
       <tr>
         <td><%= company.title %></td>
-        <td><%= link_to "Apply", apply_company_path(company), class: 'btn btn-success' %></td>
+        <td>
+          <% if current_user.company != company %>
+            <%= link_to "Apply", apply_company_path(company), class: 'btn btn-success'  %>
+          <% else %>
+            <% if current_user.has_role? "applied" %>
+              Applied
+            <% else %>
+              Already an Employee
+            <% end %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
