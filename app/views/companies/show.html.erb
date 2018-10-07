@@ -11,8 +11,22 @@
       <%= link_to "Rate", rate_company_path(@company), class: 'btn btn-success' %>
     </div>
   </div>
+  <div class="row">
+    <% @data.each do |field, rating|  %>
+        <% if !rating.to_f.nan? %>
+          <div class="col-md-6">
+            <h2><%= field.to_s.titleize %><h2>
+            <div class="progress">
+              <div class="progress-bar  progress-bar-warning" role="progressbar" aria-valuenow="<%= rating.to_i %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= rating*100/5 %>%;">
+                <!-- <span class="sr-only">60% Complete</span> -->
+              </div>
+            </div>
+          </div>
+        <% end %>
+    <% end %>
+  </div>
 </div>
 
 <br>
-<%# link_to 'Edit', edit_company_path(@company) %> |
+<%# link_to 'Edit', edit_company_path(@company) %> 
 <%# link_to 'Back', companies_path %>

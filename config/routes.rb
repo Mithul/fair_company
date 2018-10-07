@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rewards
   resources :companies
   namespace :admin do
       resources :companies
@@ -19,4 +20,7 @@ Rails.application.routes.draw do
   get '/rate/:company_id' => 'companies#rate', as: :rate_company
 
   post '/ratings' => 'companies#save_rating' , as: :ratings
+
+  get '/redeem/:reward_id' => 'rewards#redeem', as: :redeem_reward
+
 end

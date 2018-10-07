@@ -2,6 +2,7 @@
   <% if current_user.roles.pluck(:name).include? "company_admin" %>
     <li><%= link_to 'Approvals', applications_company_path %></li>
   <% elsif !current_user.roles.pluck(:name).include? "company_admin" %>
+    <li><%= link_to "Points : #{current_user.points.round(1)}", rewards_path %></li>
     <li><%= link_to 'Apply as employee', user_apply_company_path %></li>
   <% end %>
   <li><%= link_to 'Edit account', edit_user_registration_path %></li>

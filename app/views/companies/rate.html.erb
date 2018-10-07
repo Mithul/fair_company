@@ -1,5 +1,5 @@
-<p id="notice"><%= notice %></p>
 
+<%= simple_form_for @rating do |f| %>
 <div class="jumbotron">
   <div class="row">
     <div class="col-md-6">
@@ -8,20 +8,23 @@
     </div>
     <div class="col-md-6">
       <%= link_to "Upload Receipt", upload_receipt_path(@company), class: 'btn btn-info' %>
-      <%= link_to "Rate", rate_company_path(@company), class: 'btn btn-success' %>
+      <%= f.submit "Rate", class: 'btn btn-success' %>
     </div>
   </div>
   <div class="row">
     <h2>Ratings</h2>
-    <%= simple_form_for @rating do |f| %>
+      <%= f.input :company_id, as: :hidden %>
       <% @columns.each do |column| %>
         <div class="col-md-6">
           <%= f.input column, collection: [[1, '1'] ,[2, '2'],[3, '3'],[4, '4'],[5, '5']], as: :radio_buttons,  :item_wrapper_class => 'radio-inline' %>
         </div>
-      <% end %>
     <% end %>
+    <div class="col-md-6">
+      <%= f.input :review %>
+    </div>
   </div>
 </div>
+<% end %>
 
 <br>
 <%# link_to 'Edit', edit_company_path(@company) %>

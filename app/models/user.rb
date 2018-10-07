@@ -13,4 +13,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable
+
+  def add_points company
+    points = self.points
+    points = 0 if points.nil?
+    multiplier = company.get_overal_rating
+    points = points + multiplier
+    self.points = points
+    self.save
+  end
+
 end
