@@ -1,4 +1,9 @@
 <% if user_signed_in? %>
+  <% if current_user.roles.pluck(:name).include? "company_admin" %>
+    <li><%= link_to 'Approvals', applications_company_path %></li>
+  <% elsif !current_user.roles.pluck(:name).include? "company_admin" %>
+    <li><%= link_to 'Apply as employee', user_apply_company_path %></li>
+  <% end %>
   <li><%= link_to 'Edit account', edit_user_registration_path %></li>
   <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
 <% else %>

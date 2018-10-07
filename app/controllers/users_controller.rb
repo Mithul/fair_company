@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_only, :except => :show
+  before_action :admin_only, :except => [:show, :apply, :apply_company]
 
   def index
     @users = User.all
@@ -28,6 +28,19 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.destroy
     redirect_to users_path, :notice => "User deleted."
+  end
+
+  def apply
+    @companies = Company.all
+  end
+
+  def apply_company
+    @company = Company.find params[:company_id]
+    current_user.company = @company
+    current_user.save
+    current_user.add_role :applied
+    flash[:notice] = "Sent request to company for approval"
+    redirect_to root_path
   end
 
   private

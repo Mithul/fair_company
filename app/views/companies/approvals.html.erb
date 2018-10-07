@@ -1,0 +1,16 @@
+<table class="table table-responsive table-striped table-hover">
+  <thead>
+    <td>Name</td>
+    <td>Email</td>
+    <td>Approve</td>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to "Approve", approve_user_path(user), class: 'btn btn-success' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

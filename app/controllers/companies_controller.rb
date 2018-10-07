@@ -61,6 +61,38 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def approvals
+    @users = User.where(company: current_user.company).with_role :applied
+  end
+
+  def approve
+    @user = User.find params[:user_id]
+    @user.remove_role :applied
+    @user.add_role :employee
+    redirect_to applications_company_path
+  end
+
+  def rate
+    @company = Company.find params[:company_id]
+    @rating = @company.ratings.build
+    columns = [:programs,
+      :community_involvement,
+      :misdemeanors,
+      :average_wage,
+      :employee_benefits,
+      :background_checks,
+      :finances,
+      :discrimination,
+      :hiring_process,
+      :legality,
+      :peer_relations,
+      :management,
+      :workload,
+      :hr_cooperation,
+      :work_conditions]
+    @columns = columns[1..5]
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_company

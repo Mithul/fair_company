@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  company: one
+  programs: 1
+  community_involvement: 1
+  misdemeanors: 1
+  average_wage: 1
+  employee_benefits: 1
+  background_checks: 1
+  finances: 1
+  discrimination: 1
+  hiring_process: 1
+  legality: 1
+  peer_relations: 1
+  management: 1
+  workload: 1
+  hr_cooperation: 1
+  work_conditions: 1
+
+two:
+  user: two
+  company: two
+  programs: 1
+  community_involvement: 1
+  misdemeanors: 1
+  average_wage: 1
+  employee_benefits: 1
+  background_checks: 1
+  finances: 1
+  discrimination: 1
+  hiring_process: 1
+  legality: 1
+  peer_relations: 1
+  management: 1
+  workload: 1
+  hr_cooperation: 1
+  work_conditions: 1
