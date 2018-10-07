@@ -1,0 +1,14 @@
+<table class="table table-responsive table-striped table-hover">
+  <thead>
+    <td>Name</td>
+    <td>Apply</td>
+  </thead>
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.title %></td>
+        <td><%= link_to "Apply", apply_company_path(company), class: 'btn btn-success' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
